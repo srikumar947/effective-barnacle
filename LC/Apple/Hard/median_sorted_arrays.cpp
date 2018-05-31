@@ -97,7 +97,7 @@ L1 <= R2 and L2 <= R1.
 
 Now we can use simple binary search to find out the result.
 
-If we have L1 > R1, it means there are too many large numbers on the left half of A1, then we must move C1 to the left (i.e. move C2 to the right);
+If we have L1 > R2, it means there are too many large numbers on the left half of A1, then we must move C1 to the left (i.e. move C2 to the right);
 If L2 > R1, then there are too many large numbers on the left half of A2, and we must move C2 to the left.
 Otherwise, this cut is the right one.
 After we find the cut, the medium can be computed as (max(L1, L2) + min(R1, R2)) / 2;

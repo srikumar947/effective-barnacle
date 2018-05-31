@@ -50,13 +50,13 @@ bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
         for (j = 0; j < numCourses; j++)
             if (!inDegree[j])
                 break;
-            if (j == numCourses)
-                return false;
+        if (j == numCourses)
+            return false;
 
-            inDegree[j] = -1;
+        inDegree[j] = -1;
 
-            for (auto p : graph[j])
-                inDegree[p]--;
+        for (auto p : graph[j])
+            inDegree[p]--;
     }
     return true;
 }

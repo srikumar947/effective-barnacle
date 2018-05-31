@@ -53,10 +53,10 @@ void reorderList(ListNode* head) // 850 ms
 	}
 }
 
-ListNode* reverseList(ListNode* head) 
+ListNode* reverseList(ListNode* head)
 {
 	ListNode *current = head, *next = NULL, *temp = NULL;
-	
+
 	while (current)
 	{
 		next = current->next;
@@ -110,7 +110,7 @@ int main()
 
 	cout << "\n Enter the number of elements: ";
 	cin >> n;
-	
+
 	cout << "\n Enter the elements: ";
 
 	while (i < n)
@@ -118,7 +118,7 @@ int main()
     	cin >> x;
 
         ListNode* temp = new ListNode(x);
-        
+
         if (flag == 1)
         {
             head1 = temp;
@@ -129,9 +129,9 @@ int main()
         else
         {
             l1->next = temp;
-            l1 = temp;    
+            l1 = temp;
         }
-        
+
         i += 1;
     }
 
@@ -142,7 +142,7 @@ int main()
 	if (l1)
 	{
 		cout << "\n\n The new list is: ";
-	
+
 		while (l1)
 		{
 			if (l1->next != NULL)
@@ -153,10 +153,10 @@ int main()
 			l1 = l1->next;
 		}
 	}
-	
+
 	else
 		cout << "\n\n Empty list";
-	
+
 	cout << endl;
 
 	return 0;

@@ -20,7 +20,7 @@ ListNode* mergeKLists(vector<ListNode*>& lists)
 	ListNode *head = NULL, *l = NULL;
 	int min, pos, i, k = lists.size(), flag = 1, hFlag = 1, tFlag = 1;
 	auto iterator = lists.begin();
-	
+
 	while (true)
 	{
 		pos = -1;
@@ -52,7 +52,7 @@ ListNode* mergeKLists(vector<ListNode*>& lists)
 		if (pos != -1)
 		{
 			ListNode *temp = new ListNode(iterator[pos]->val);
-		
+
 			if (hFlag == 1)
 			{
 				head = temp;
@@ -78,7 +78,7 @@ ListNode* mergeKLists(vector<ListNode*>& lists)
 		if (tFlag)
 			break;
 	}
-	
+
 	return head;
 }
 
@@ -90,7 +90,7 @@ int main()
 
 	cout << "\n Enter the number of elements: ";
 	cin >> n;
-	
+
 	cout << "\n Enter the elements: ";
 
 	while (i < n)
@@ -98,7 +98,7 @@ int main()
     	cin >> x;
 
         ListNode* temp = new ListNode(x);
-        
+
         if (flag == 1)
         {
             head1 = temp;
@@ -109,9 +109,9 @@ int main()
         else
         {
             l1->next = temp;
-            l1 = temp;    
+            l1 = temp;
         }
-        
+
         i += 1;
     }
 
@@ -120,7 +120,7 @@ int main()
 
     cout << "\n Enter the number of elements: ";
 	cin >> n;
-	
+
 	cout << "\n Enter the elements: ";
 
 	while (i < n)
@@ -128,7 +128,7 @@ int main()
     	cin >> x;
 
         ListNode* temp = new ListNode(x);
-        
+
         if (flag == 1)
         {
             head2 = temp;
@@ -139,9 +139,9 @@ int main()
         else
         {
             l1->next = temp;
-            l1 = temp;    
+            l1 = temp;
         }
-        
+
         i += 1;
     }
 
@@ -153,7 +153,7 @@ int main()
 	if (l1)
 	{
 		cout << "\n\n The new list is: ";
-	
+
 		while (l1)
 		{
 			if (l1->next != NULL)
@@ -164,98 +164,11 @@ int main()
 			l1 = l1->next;
 		}
 	}
-	
+
 	else
 		cout << "\n\n Empty list";
-	
+
 	cout << endl;
 
 	return 0;
 }
-
-/*
-This solution is better than the one above by 7 ms.
-ListNode* mergeList(ListNode *l1, ListNode *l2 )
-{
-    if(l1==NULL)
-        return l2;
-
-    if(l2==NULL)
-        return l1;
-    
-    ListNode *merged = NULL;
-    
-    if(l1->val < l2->val) 
-    {
-        merged = l1;
-        l1 = l1->next;
-    } 
-    
-    else
-    {
-        merged = l2;
-        l2 = l2->next;
-    }
-
-    ListNode* curr = merged; 
-    
-    while(l1 && l2)
-    {
-
-        if(l1->val < l2->val)
-        {
-            curr->next = l1;
-            l1 = l1->next;
-        }
-        
-        else
-        {
-            curr->next = l2;
-            l2 = l2->next;
-        }
-
-        curr = curr->next;
-    }
-    
-    if(l1)
-    {
-        curr->next=l1;
-    } 
-    else
-    {
-        curr->next=l2;
-    }
-
-    return merged;
-}
-    
-ListNode* sortList(ListNode* head) 
-{
-    
-    ListNode* A = head;
-
-    if(A == NULL || A->next == NULL)
-        return A;
-    
-    // n>=2
-    
-    ListNode *p1 = A;
-    ListNode *p2 = A->next;
-    
-    // Find mid 
-    while(p2 != NULL && p2->next!= NULL)
-    {
-        p1 = p1->next;
-        p2 = p2->next->next;
-    }
-    
-    // p1 is the middle point. divide 
-    p2 = p1->next;
-    p1->next = NULL;
-
-    ListNode *l1 = sortList(A);
-    ListNode *l2 = sortList(p2);
-    
-    return mergeList(l1, l2);
-}
-*/

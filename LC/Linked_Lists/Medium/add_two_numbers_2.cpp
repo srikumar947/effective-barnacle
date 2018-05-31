@@ -25,11 +25,11 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
-ListNode* addTwoNumbers(ListNode* head1, ListNode* head2) 
+ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
 {
     ListNode *l1 = NULL, *l2 = NULL, *head3 = NULL, *l3 = NULL, *current = NULL, *next = NULL, *temp1 = NULL;
     int n = 0, m = 0, carry = 0, i = 1, sum = 0, flag = 1;
-    
+
     while (head1 && head1->val == 0)
     	head1 = head1->next;
 
@@ -42,7 +42,7 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
     	return temp;
     }
 
-    else if (head1 == NULL)    
+    else if (head1 == NULL)
     	return head2;
 
     else if (head2 == NULL)
@@ -51,7 +51,7 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
     else
     {
     	for (l1 = head1; l1; l1 = l1->next)
-    	n += 1;
+    	   n += 1;
 
 	    for (l2 = head2; l2; l2 = l2->next)
 	    	m += 1;
@@ -60,7 +60,7 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
 	    {
 	    	i = 1;
 	    	l1 = head1;
-	    	
+
 	    	while (i < n)
 	    	{
 	    		l1 = l1->next;
@@ -89,7 +89,7 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
 	    	}
 
 	    	ListNode *temp = new ListNode(sum);
-	    	
+
 	    	if (flag == 1)
 	    	{
 	    		head3 = temp;
@@ -109,7 +109,7 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
 	    {
 	    	i = 1;
 	    	l1 = head1;
-	    	
+
 	    	while (i < n)
 	    	{
 	    		l1 = l1->next;
@@ -128,7 +128,7 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
 	    	}
 
 	    	ListNode *temp = new ListNode(sum);
-	    	
+
 	    	if (flag == 1)
 	    	{
 	    		head3 = temp;
@@ -147,7 +147,7 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
 	    {
 	    	i = 1;
 	    	l2 = head2;
-	    	
+
 	    	while (i < m)
 	    	{
 	    		l2 = l2->next;
@@ -166,7 +166,7 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
 	    	}
 
 	    	ListNode *temp = new ListNode(sum);
-	    	
+
 	    	if (flag == 1)
 	    	{
 	    		head3 = temp;
@@ -205,6 +205,31 @@ ListNode* addTwoNumbers(ListNode* head1, ListNode* head2)
     }
 }
 
+ListNode* addTwoNumbers2(ListNode* head1, ListNode* head2) {
+    int num1 = 0, num2 = 0, flag = 0;
+    ListNode *l1 = head1, *l2 = head2, *l3 = NULL;
+
+    while (l1) {
+        num1 = (num1 * 10) + l1->val;
+        l1 = l1->next;
+    }
+
+    while (l2) {
+        num2 = (num2 * 10) + l2->val;
+        l2 = l2->next;
+    }
+
+    num1 += num2;
+
+    while (num1) {
+        ListNode *temp = new ListNode(num1 % 10);
+        temp->next = l1;
+        l1 = temp;
+        num1 /= 10;
+    }
+    return l1;
+}
+
 int main()
 {
 	ListNode *l1 = NULL, *l2 = NULL, *l3 = NULL, *head1 = NULL, *head2 = NULL, *current = NULL, *temp1 = NULL, *next = NULL;
@@ -213,7 +238,7 @@ int main()
 
 	cout << "\n Enter the two numbers: ";
 	cin >> number1 >> number2;
-	
+
 	if (number1 == 0)
 	{
 		ListNode *temp = new ListNode(0);
@@ -225,7 +250,7 @@ int main()
 		while (number1)
 	    {
 	        ListNode* temp = new ListNode(number1 % 10);
-	        
+
 	        if (flag == 1)
 	        {
 	            head1 = temp;
@@ -236,28 +261,28 @@ int main()
 	        else
 	        {
 	            l1->next = temp;
-	            l1 = temp;    
+	            l1 = temp;
 	        }
-	        
+
 	        number1 /= 10;
 	    }
 	}
-	
+
 
 	flag = 1;
-	
+
 	if (number2 == 0)
 	{
 		ListNode *temp = new ListNode(0);
 		head2 = temp;
 	}
-	
+
 	else
 	{
 		while (number2)
 	    {
 	        ListNode* temp = new ListNode(number2 % 10);
-	        
+
 	        if (flag == 1)
 	        {
 	            head2 = temp;
@@ -268,13 +293,13 @@ int main()
 	        else
 	        {
 	            l2->next = temp;
-	            l2 = temp;    
+	            l2 = temp;
 	        }
-	        
+
 	        number2 /= 10;
 	    }
 	}
-	
+
 
     current = head1;
 
@@ -304,7 +329,7 @@ int main()
 	l3 = addTwoNumbers(head1, head2);
 
 	cout << "\n The addition is: ";
-	
+
 	while (l3)
 	{
 		if (l3->next != NULL)
@@ -314,7 +339,7 @@ int main()
 
 		l3 = l3->next;
 	}
-	
+
 	cout << endl;
 
 	return 0;
