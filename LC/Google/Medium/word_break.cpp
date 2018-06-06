@@ -24,13 +24,31 @@ Output: false
 
 #include <iostream>
 #include <vector>
-#include <unordered_set>
 #include <unordered_map>
 
 using namespace std;
 
-bool wordBreak(string s, vector<string>& wordDict) {
+bool wordChecker(string s, vector<string>& wordDict, unordered_map<int, bool>& map, int start) {
+	if (start == s.size())
+		return true;
 
+	if (map.find(start) != map.end())
+		return map[start];
+
+	for (int i = 1; i <= s.size() - start; i++) {
+		if ((find(wordDict.begin(), wordDict.end(), s.substr(start, i)) != wordDict.end()) && wordChecker(s, wordDict, map, start + i)) {
+			map[start] = true;
+			return true;
+		}
+	}
+
+	map[start] = false;
+	return false;
+}
+
+bool wordBreak(string s, vector<string>& wordDict) {
+	unordered_map<int, bool> map;
+	return wordChecker(s, wordDict, map, 0);
 }
 
 int main () {
